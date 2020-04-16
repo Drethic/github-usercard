@@ -64,18 +64,8 @@ const followersArray = [
 
 */
 
-//API Data retrieval
-function getData() {
-
-  const cards = document.querySelector('.cards');
-  
-  axios.get(`https://api.github.com/users/Dellrodar`)
-    .then( (response) => {
-    //Parent container
-    cards.appendChild(cardCreator(response.data));
-    })
-  }
-
+//Parent Container
+const cards = document.querySelector('.cards');
 
 //Top card div
 function cardCreator(user) {
@@ -137,6 +127,18 @@ function cardCreator(user) {
 
   return card;
 }
+
+//API Data retrieval
+axios.get('https://api.github.com/users/Dellrodar')
+    .then ( obj => cardCreator(obj.data))
+    for (let i = 0; i < followersArray.length; i++) {    
+      axios.get(`https://api.github.com/users/${followersArray[i]}`)     
+      .then(res => { 
+        cards.appendChild(cardCreator(res.data));     
+     })     
+     .catch(err => console.error(err));
+        }
+
 
 /* List of LS Instructors Github username's: 
   tetondan
