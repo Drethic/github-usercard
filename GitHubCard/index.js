@@ -2,8 +2,34 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+// axios.<method> will now provide autocomplete and parameter typings
 
 axios.get(`https://api.github.com/users/dellrodar`)
+  .then(function (user) {
+    // handle success
+    console.log(user);
+
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+
+
+/*
+response: "{↵  "login": "Dellrodar",↵  "id": 3357168,↵  "node_id": "MDQ6VXNlcjMzNTcxNjg=",↵  "avatar_url": "https://avatars3.githubusercontent.com/u/3357168?v=4",↵  
+"gravatar_id": "",↵  "url": "https://api.github.com/users/Dellrodar",↵  "html_url": "https://github.com/Dellrodar",↵  "followers_url": "https://api.github.com/users/Dellrodar/followers",
+↵  "following_url": "https://api.github.com/users/Dellrodar/following{/other_user}",↵  "gists_url": "https://api.github.com/users/Dellrodar/gists{/gist_id}",↵  
+"starred_url": "https://api.github.com/users/Dellrodar/starred{/owner}{/repo}",↵  "subscriptions_url": "https://api.github.com/users/Dellrodar/subscriptions",↵  
+"organizations_url": "https://api.github.com/users/Dellrodar/orgs",↵  "repos_url": "https://api.github.com/users/Dellrodar/repos",↵  
+"events_url": "https://api.github.com/users/Dellrodar/events{/privacy}",↵  "received_events_url": "https://api.github.com/users/Dellrodar/received_events",↵  
+"type": "User",↵  "site_admin": false,↵  "name": null,↵  "company": null,↵  "blog": "",↵  "location": null,↵  "email": null,↵  "hireable": null,↵
+"bio": null,↵  "public_repos": 21,↵  "public_gists": 0,↵  "followers": 7,↵  "following": 6,↵  "created_at": "2013-01-23T17:13:09Z",↵  "updated_at": "2020-04-14T22:52:49Z"↵}↵"
+*/
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -47,6 +73,69 @@ const followersArray = [];
 </div>
 
 */
+
+//Parent container
+const cardContainer = document.querySelector('.cards');
+
+//Top card div
+function cardCreator(user) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+  cardContainer.appendChild(card);
+
+  //image start
+  const cardImg = document.createElement('img');
+  cardImg.src = user.data.avatar_url;
+  card.appendChild(cardImg);
+
+  //Card info div
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+  card.appendChild(cardInfo);
+
+  //Card Info heading
+  const userRealName = document.createElement('h3');
+  userRealName.textContent = user.data.name;
+  cardInfo.appendChild(userRealName);
+
+  //Card Info User Name
+  const userName = document.createElement('p');
+  userName.textContent = user.data.login;
+  cardInfo.appendChild(userName);
+
+  //Card Info Location
+  const userLocation = document.createElement('p');
+  userLocation.textContent = `Location: ${user.data.location}`;
+  cardInfo.appendChild(userLocation);
+
+  //Card info Github Link Container
+  const githubLinkContainer = document.createElement('p');
+  githubLinkContainer.textContent = `Location: ${user.data.location}`;
+  cardInfo.appendChild(githubLinkContainer);
+
+  //Card Info Github Link
+  const githubLink = document.createElement('a')
+  githubLink.textContent = `${user.data.html_url}`;
+  githubLink.href = user.data.html_url;
+  githubLinkContainer.appendChild(githubLink);
+
+  //Card Info Followers Count
+  const followers = document.createElement('p');
+  followers.textContent = `Followers: ${user.data.followers}`;
+  cardInfo.appendChild(followers);
+
+  //Card Info Following Count
+  const followingUsers = document.createElement('p')
+  followingUsers.textContent = `Following: ${user.data.following}`;
+  cardInfo.appendChild(followingUsers);
+
+  //Card Info Bio
+  const userBio = document.createElement('p');
+  userBio.textContent = `Bio: ${user.data.bio}`;
+  cardInfo.appendChild(userBio);
+
+  return cardCreator;
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
