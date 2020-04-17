@@ -34,7 +34,6 @@ response: "{↵  "login": "Dellrodar",↵  "id": 3357168,↵  "node_id": "MDQ6VX
 */
 
 const followersArray = [
-  "Dellrodar",
   "tetondan",
   "dustinmyers",
   "justsml",
@@ -127,17 +126,17 @@ function cardCreator(user) {
 }
 
 //API Data retrieval
-axios
-  .get("https://api.github.com/users/Dellrodar")
-  .then((obj) => cardCreator(obj.data));
-for (let i = 0; i < followersArray.length; i++) {
+//const baseUrl = 'https://api.github.com/users';
+//const user = 'Dellrodar';
   axios
-    .get(`https://api.github.com/users/${followersArray[i]}`)
-    .then((res) => {
-      cards.appendChild(cardCreator(res.data));
-    })
-    .catch((err) => console.error(err));
-}
+    .get("https://api.github.com/users/Dellrodar")
+    .then((user) => cards.appendChild(cardCreator(user.data)))
+    .then(followersArray.map( follower => {
+    axios.get(`https://api.github.com/users/${follower}`)
+      .then((user) => {
+        cards.appendChild(cardCreator(user.data))
+  })
+}));
 
 /* List of LS Instructors Github username's:
   tetondan
