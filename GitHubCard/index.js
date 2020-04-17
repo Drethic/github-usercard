@@ -1,3 +1,194 @@
+//Mock Server creation
+const express = require('express');
+const app = express();
+const port = 3000;
+
+
+const userData = {
+  "login": "Dellrodar",
+  "id": 3357168,
+  "node_id": "MDQ6VXNlcjMzNTcxNjg=",
+  "avatar_url": "https://avatars3.githubusercontent.com/u/3357168?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/Dellrodar",
+  "html_url": "https://github.com/Dellrodar",
+  "followers_url": "https://api.github.com/users/Dellrodar/followers",
+  "following_url": "https://api.github.com/users/Dellrodar/following{/other_user}",
+  "gists_url": "https://api.github.com/users/Dellrodar/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/Dellrodar/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/Dellrodar/subscriptions",
+  "organizations_url": "https://api.github.com/users/Dellrodar/orgs",
+  "repos_url": "https://api.github.com/users/Dellrodar/repos",
+  "events_url": "https://api.github.com/users/Dellrodar/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/Dellrodar/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": null,
+  "company": null,
+  "blog": "",
+  "location": null,
+  "email": null,
+  "hireable": null,
+  "bio": null,
+  "public_repos": 21,
+  "public_gists": 0,
+  "followers": 7,
+  "following": 6,
+  "created_at": "2013-01-23T17:13:09Z",
+  "updated_at": "2020-04-14T22:52:49Z"
+};
+
+const followerData =  [
+  {
+    "login": "3z21",
+    "id": 61799152,
+    "node_id": "MDQ6VXNlcjYxNzk5MTUy",
+    "avatar_url": "https://avatars2.githubusercontent.com/u/61799152?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/3z21",
+    "html_url": "https://github.com/3z21",
+    "followers_url": "https://api.github.com/users/3z21/followers",
+    "following_url": "https://api.github.com/users/3z21/following{/other_user}",
+    "gists_url": "https://api.github.com/users/3z21/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/3z21/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/3z21/subscriptions",
+    "organizations_url": "https://api.github.com/users/3z21/orgs",
+    "repos_url": "https://api.github.com/users/3z21/repos",
+    "events_url": "https://api.github.com/users/3z21/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/3z21/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "Jaylazer-glitch",
+    "id": 59575430,
+    "node_id": "MDQ6VXNlcjU5NTc1NDMw",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/59575430?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Jaylazer-glitch",
+    "html_url": "https://github.com/Jaylazer-glitch",
+    "followers_url": "https://api.github.com/users/Jaylazer-glitch/followers",
+    "following_url": "https://api.github.com/users/Jaylazer-glitch/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Jaylazer-glitch/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Jaylazer-glitch/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Jaylazer-glitch/subscriptions",
+    "organizations_url": "https://api.github.com/users/Jaylazer-glitch/orgs",
+    "repos_url": "https://api.github.com/users/Jaylazer-glitch/repos",
+    "events_url": "https://api.github.com/users/Jaylazer-glitch/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Jaylazer-glitch/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "Ryan-webdev",
+    "id": 25049020,
+    "node_id": "MDQ6VXNlcjI1MDQ5MDIw",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/25049020?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Ryan-webdev",
+    "html_url": "https://github.com/Ryan-webdev",
+    "followers_url": "https://api.github.com/users/Ryan-webdev/followers",
+    "following_url": "https://api.github.com/users/Ryan-webdev/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Ryan-webdev/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Ryan-webdev/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Ryan-webdev/subscriptions",
+    "organizations_url": "https://api.github.com/users/Ryan-webdev/orgs",
+    "repos_url": "https://api.github.com/users/Ryan-webdev/repos",
+    "events_url": "https://api.github.com/users/Ryan-webdev/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Ryan-webdev/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "GreenKnightGoof",
+    "id": 60906118,
+    "node_id": "MDQ6VXNlcjYwOTA2MTE4",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/60906118?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/GreenKnightGoof",
+    "html_url": "https://github.com/GreenKnightGoof",
+    "followers_url": "https://api.github.com/users/GreenKnightGoof/followers",
+    "following_url": "https://api.github.com/users/GreenKnightGoof/following{/other_user}",
+    "gists_url": "https://api.github.com/users/GreenKnightGoof/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/GreenKnightGoof/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/GreenKnightGoof/subscriptions",
+    "organizations_url": "https://api.github.com/users/GreenKnightGoof/orgs",
+    "repos_url": "https://api.github.com/users/GreenKnightGoof/repos",
+    "events_url": "https://api.github.com/users/GreenKnightGoof/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/GreenKnightGoof/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "Spacecase94",
+    "id": 45679995,
+    "node_id": "MDQ6VXNlcjQ1Njc5OTk1",
+    "avatar_url": "https://avatars3.githubusercontent.com/u/45679995?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Spacecase94",
+    "html_url": "https://github.com/Spacecase94",
+    "followers_url": "https://api.github.com/users/Spacecase94/followers",
+    "following_url": "https://api.github.com/users/Spacecase94/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Spacecase94/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Spacecase94/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Spacecase94/subscriptions",
+    "organizations_url": "https://api.github.com/users/Spacecase94/orgs",
+    "repos_url": "https://api.github.com/users/Spacecase94/repos",
+    "events_url": "https://api.github.com/users/Spacecase94/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Spacecase94/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "Devin44G",
+    "id": 35251347,
+    "node_id": "MDQ6VXNlcjM1MjUxMzQ3",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/35251347?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/Devin44G",
+    "html_url": "https://github.com/Devin44G",
+    "followers_url": "https://api.github.com/users/Devin44G/followers",
+    "following_url": "https://api.github.com/users/Devin44G/following{/other_user}",
+    "gists_url": "https://api.github.com/users/Devin44G/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/Devin44G/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/Devin44G/subscriptions",
+    "organizations_url": "https://api.github.com/users/Devin44G/orgs",
+    "repos_url": "https://api.github.com/users/Devin44G/repos",
+    "events_url": "https://api.github.com/users/Devin44G/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/Devin44G/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  {
+    "login": "YorAlexVargas",
+    "id": 48666085,
+    "node_id": "MDQ6VXNlcjQ4NjY2MDg1",
+    "avatar_url": "https://avatars1.githubusercontent.com/u/48666085?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/YorAlexVargas",
+    "html_url": "https://github.com/YorAlexVargas",
+    "followers_url": "https://api.github.com/users/YorAlexVargas/followers",
+    "following_url": "https://api.github.com/users/YorAlexVargas/following{/other_user}",
+    "gists_url": "https://api.github.com/users/YorAlexVargas/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/YorAlexVargas/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/YorAlexVargas/subscriptions",
+    "organizations_url": "https://api.github.com/users/YorAlexVargas/orgs",
+    "repos_url": "https://api.github.com/users/YorAlexVargas/repos",
+    "events_url": "https://api.github.com/users/YorAlexVargas/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/YorAlexVargas/received_events",
+    "type": "User",
+    "site_admin": false
+  }
+];
+
+app.get('/Dellrodar', (req, res) => res.send(userData));
+
+app.get('/Dellrodar/followers', (req, res) => res.send(followerData));
+
+app.listen(port, () => console.log(`Mock Github API listening at http://localhost:${port}`));
+
+
+
 /* Step 1: using axios, send a GET request to the following URL
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
@@ -34,11 +225,11 @@ response: "{↵  "login": "Dellrodar",↵  "id": 3357168,↵  "node_id": "MDQ6VX
 */
 
 const followersArray = [
-  "tetondan",
-  "dustinmyers",
-  "justsml",
-  "luishrd",
-  "bigknell",
+  'tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigknell',
 ];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
